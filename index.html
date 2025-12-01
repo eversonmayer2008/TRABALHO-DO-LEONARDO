@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechSolutions - Sistema de Gestão de Softwares</title>
+    <title>TechSolutions - Sistema Completo de Gestão para Venda de Softwares</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e configurações gerais */
@@ -25,6 +25,8 @@
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-secondary: linear-gradient(135deg, #3498db, #2c3e50);
             --gradient-dark: linear-gradient(135deg, #1a2b3c, #2c3e50);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         body {
@@ -46,13 +48,13 @@
             background: rgba(26, 43, 60, 0.95);
             color: white;
             padding: 1.2rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            transition: all 0.4s ease;
+            transition: var(--transition);
         }
 
         header.scrolled {
@@ -102,7 +104,7 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             padding: 8px 15px;
             border-radius: 6px;
             position: relative;
@@ -137,7 +139,7 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 8px 12px;
             border-radius: 6px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .mobile-menu:hover {
@@ -146,7 +148,7 @@
 
         /* Hero Section */
         .hero {
-            background: var(--gradient-dark), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a2b3c"/><path d="M0 0L100 100M100 0L0 100" stroke="%233498db" stroke-width="1"/></svg>');
+            background: var(--gradient-dark);
             color: white;
             padding: 12rem 0 6rem;
             text-align: center;
@@ -246,7 +248,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            transition: all 0.4s;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
@@ -325,19 +327,6 @@
             position: relative;
         }
 
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8f9fa" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center bottom;
-            z-index: 0;
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -351,7 +340,7 @@
             border-radius: 15px;
             padding: 3rem 2.5rem;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
+            transition: var(--transition);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -452,7 +441,7 @@
             padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -496,7 +485,7 @@
             padding: 15px 25px;
             color: #555;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
             font-weight: 500;
         }
 
@@ -711,7 +700,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 8px;
@@ -739,18 +728,9 @@
             background: #f5f5f5;
         }
 
-        /* Sales Process Styles */
-        .sales-process {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 30px;
-        }
-
+        /* Cart Styles */
         .cart-items {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
         }
 
         .cart-header {
@@ -762,12 +742,27 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
+        .cart-header h3 {
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .cart-list {
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
         .cart-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px 0;
+            padding: 15px;
             border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.3s;
+        }
+
+        .cart-item:hover {
+            background-color: #f9f9f9;
         }
 
         .cart-item:last-child {
@@ -775,15 +770,15 @@
         }
 
         .cart-item-image {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            margin-right: 15px;
         }
 
         .cart-item-details {
@@ -791,239 +786,113 @@
         }
 
         .cart-item-details h4 {
-            font-weight: 600;
-            margin-bottom: 5px;
+            margin: 0 0 5px 0;
+            color: var(--primary);
         }
 
         .cart-item-price {
+            font-weight: 600;
             color: var(--secondary);
-            font-weight: 700;
         }
 
         .cart-item-quantity {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin: 0 15px;
         }
 
         .quantity-btn {
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background: #f0f0f0;
-            border: none;
+            border: 1px solid #ddd;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .quantity-btn:hover {
-            background: #e0e0e0;
+            background: #f0f0f0;
         }
 
         .cart-summary {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            height: fit-content;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 10px;
         }
 
         .summary-total {
-            font-size: 1.3rem;
             font-weight: 700;
+            font-size: 1.2rem;
             color: var(--primary);
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
         }
 
         .btn-checkout {
             width: 100%;
             padding: 15px;
-            background: var(--accent);
+            background: var(--success);
             color: white;
             border: none;
             border-radius: 8px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .btn-checkout:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        /* Clients Styles */
-        .clients-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .clients-table th {
-            background: #f8f9fa;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            color: var(--primary);
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .clients-table td {
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .clients-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .client-status {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .status-active {
-            background: rgba(39, 174, 96, 0.1);
-            color: var(--success);
-        }
-
-        .status-inactive {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--accent);
-        }
-
-        /* Reports Styles */
-        .reports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .report-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--secondary);
-        }
-
-        .report-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .report-actions {
-            display: flex;
-            gap: 10px;
             margin-top: 20px;
         }
 
-        /* Settings Styles */
-        .settings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        .btn-checkout:hover {
+            background: #219653;
+            transform: translateY(-2px);
         }
 
-        .settings-card {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid var(--secondary);
-        }
-
-        .settings-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .settings-list {
-            list-style: none;
-        }
-
-        .settings-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .settings-list li:last-child {
-            border-bottom: none;
-        }
-
-        .toggle-switch {
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 25px;
             position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
         }
 
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .slider {
+        .search-input:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .search-btn {
             position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #777;
             cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: var(--secondary);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
+            font-size: 1.1rem;
         }
 
         /* Modal */
@@ -1052,6 +921,8 @@
             padding: 30px;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
             animation: modalFadeIn 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes modalFadeIn {
@@ -1079,6 +950,11 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: #777;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
         }
 
         .form-group {
@@ -1098,12 +974,13 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border 0.3s;
+            transition: var(--transition);
         }
 
         .form-control:focus {
             border-color: var(--secondary);
             outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
 
         .modal-actions {
@@ -1145,20 +1022,6 @@
             position: relative;
         }
 
-        .team::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 400px;
-            height: 400px;
-            background: var(--gradient);
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.08;
-            transform: translate(-30%, 30%);
-        }
-
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1171,7 +1034,7 @@
             overflow: hidden;
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
             text-align: center;
-            transition: all 0.4s ease;
+            transition: var(--transition);
             position: relative;
             border: 1px solid rgba(0, 0, 0, 0.03);
         }
@@ -1238,7 +1101,7 @@
             background: #f0f0f0;
             border-radius: 50%;
             color: var(--primary);
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-size: 1.2rem;
         }
 
@@ -1294,7 +1157,7 @@
         .footer-links a {
             color: #bdc3c7;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1326,7 +1189,7 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             font-size: 1.2rem;
         }
 
@@ -1367,6 +1230,190 @@
             transform: translateY(0);
         }
 
+        /* Loading Spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10000;
+            max-width: 400px;
+            animation: slideInRight 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+
+        .notification-success {
+            border-left-color: var(--success);
+        }
+
+        .notification-info {
+            border-left-color: var(--secondary);
+        }
+
+        .notification-error {
+            border-left-color: var(--accent);
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #777;
+            margin-left: auto;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Statistics Counter */
+        .counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .counter-item {
+            padding: 20px;
+        }
+
+        .counter-item h3 {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            transition: width 0.5s ease;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-role {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .testimonial-dot.active {
+            background: var(--secondary);
+        }
+
         /* Responsividade */
         @media (max-width: 992px) {
             .demo-content {
@@ -1377,12 +1424,14 @@
                 display: none;
             }
             
-            .sales-process {
-                grid-template-columns: 1fr;
+            .demo-nav {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
+            .counter-container {
+                flex-direction: column;
+                gap: 2rem;
             }
         }
 
@@ -1443,6 +1492,30 @@
                 padding: 14px 28px;
                 font-size: 1rem;
             }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .hero-content .btn-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cart-item-quantity {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -1480,8 +1553,34 @@
             <div class="hero-content">
                 <h2>Sistema Completo de Gestão para Venda de Softwares</h2>
                 <p>Uma solução integrada para empresas que desejam otimizar o processo de vendas, gestão de clientes e controle de estoque de licenças de software.</p>
-                <a href="#demo" class="btn"><i class="fas fa-play-circle"></i> Ver Demonstração</a>
-                <a href="#features" class="btn btn-secondary"><i class="fas fa-list"></i> Funcionalidades</a>
+                <div class="btn-container">
+                    <a href="#demo" class="btn"><i class="fas fa-play-circle"></i> Ver Demonstração</a>
+                    <a href="#features" class="btn btn-secondary"><i class="fas fa-list"></i> Funcionalidades</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="features" id="statistics">
+        <div class="container">
+            <div class="counter-container">
+                <div class="counter-item">
+                    <div class="counter" data-target="1500">0</div>
+                    <h3>Clientes Satisfeitos</h3>
+                </div>
+                <div class="counter-item">
+                    <div class="counter" data-target="5000">0</div>
+                    <h3>Vendas Realizadas</h3>
+                </div>
+                <div class="counter-item">
+                    <div class="counter" data-target="120">0</div>
+                    <h3>Integrações Ativas</h3>
+                </div>
+                <div class="counter-item">
+                    <div class="counter" data-target="99">0</div>
+                    <h3>Uptime (%)</h3>
+                </div>
             </div>
         </div>
     </section>
@@ -1527,6 +1626,43 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que nossos clientes dizem</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <div class="testimonial-text">
+                        "O TechSolutions revolucionou nossa gestão de vendas. Aumentamos nossa eficiência em 40% no primeiro mês de uso."
+                    </div>
+                    <div class="testimonial-author">Maria Silva</div>
+                    <div class="testimonial-role">CEO da TechCorp</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "A interface é intuitiva e o suporte é excepcional. Melhor investimento que fizemos este ano!"
+                    </div>
+                    <div class="testimonial-author">João Santos</div>
+                    <div class="testimonial-role">Gerente de Vendas, SoftTech</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Sistema robusto e confiável. As integrações com nossos sistemas existentes foram perfeitas."
+                    </div>
+                    <div class="testimonial-author">Ana Costa</div>
+                    <div class="testimonial-role">Diretora de TI, Inova Systems</div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-slide="0"></div>
+                    <div class="testimonial-dot" data-slide="1"></div>
+                    <div class="testimonial-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Demonstração Interativa -->
     <section class="demo-interactive" id="demo">
         <div class="container">
@@ -1544,9 +1680,6 @@
                         <button class="nav-btn active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
                         <button class="nav-btn" data-section="sales"><i class="fas fa-shopping-cart"></i> Vendas</button>
                         <button class="nav-btn" data-section="products"><i class="fas fa-box-open"></i> Produtos</button>
-                        <button class="nav-btn" data-section="clients"><i class="fas fa-users"></i> Clientes</button>
-                        <button class="nav-btn" data-section="reports"><i class="fas fa-chart-bar"></i> Relatórios</button>
-                        <button class="nav-btn" data-section="settings"><i class="fas fa-cog"></i> Configurações</button>
                     </div>
                 </div>
 
@@ -1589,6 +1722,11 @@
                                     <div class="stat-change"><i class="fas fa-arrow-up"></i> 3% este mês</div>
                                 </div>
                             </div>
+
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <p style="color: #666; font-size: 0.9rem;">Meta mensal: 75% concluída</p>
 
                             <div class="recent-activity">
                                 <h3 style="margin-bottom: 20px;">Atividade Recente</h3>
@@ -1713,7 +1851,13 @@
                                 <button class="btn btn-primary" id="add-product-btn"><i class="fas fa-plus"></i> Adicionar Produto</button>
                             </div>
                             
-                            <div class="products-grid">
+                            <div class="search-container">
+                                <input type="text" class="search-input" id="product-search" placeholder="Buscar produtos...">
+                                <button class="search-btn"><i class="fas fa-search"></i></button>
+                            </div>
+                            
+                            <div class="products-grid" id="products-container">
+                                <!-- Produtos serão carregados aqui dinamicamente -->
                                 <div class="product-card">
                                     <div class="product-image"><i class="fas fa-desktop"></i></div>
                                     <div class="product-info">
@@ -1763,223 +1907,6 @@
                                             <button class="btn-sm btn-outline-sm"><i class="fas fa-trash"></i></button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Clients Section -->
-                        <div class="content-section" id="clients">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-                                <h2 class="section-title-sm" style="margin: 0;">Clientes Cadastrados</h2>
-                                <button class="btn btn-primary" id="add-client-btn"><i class="fas fa-plus"></i> Adicionar Cliente</button>
-                            </div>
-                            
-                            <table class="clients-table">
-                                <thead>
-                                    <tr>
-                                        <th>Empresa</th>
-                                        <th>CNPJ</th>
-                                        <th>Contato</th>
-                                        <th>E-mail</th>
-                                        <th>Status</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Empresa ABC Ltda</td>
-                                        <td>12.345.678/0001-90</td>
-                                        <td>João Silva</td>
-                                        <td>joao@empresaabc.com</td>
-                                        <td><span class="client-status status-active">Ativo</span></td>
-                                        <td>
-                                            <button class="btn-sm btn-primary-sm"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-sm btn-outline-sm"><i class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>TechSolutions Brasil</td>
-                                        <td>98.765.432/0001-10</td>
-                                        <td>Maria Santos</td>
-                                        <td>maria@techsolutions.com</td>
-                                        <td><span class="client-status status-active">Ativo</span></td>
-                                        <td>
-                                            <button class="btn-sm btn-primary-sm"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-sm btn-outline-sm"><i class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>InovaSoft Sistemas</td>
-                                        <td>11.222.333/0001-44</td>
-                                        <td>Carlos Oliveira</td>
-                                        <td>carlos@inovasoft.com</td>
-                                        <td><span class="client-status status-inactive">Inativo</span></td>
-                                        <td>
-                                            <button class="btn-sm btn-primary-sm"><i class="fas fa-edit"></i></button>
-                                            <button class="btn-sm btn-outline-sm"><i class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Reports Section -->
-                        <div class="content-section" id="reports">
-                            <h2 class="section-title-sm">Relatórios</h2>
-                            
-                            <div class="reports-grid">
-                                <div class="report-card">
-                                    <h3>Relatório de Vendas</h3>
-                                    <p>Análise detalhada das vendas por período, produto e vendedor.</p>
-                                    <div class="report-actions">
-                                        <button class="btn btn-primary"><i class="fas fa-download"></i> Baixar PDF</button>
-                                        <button class="btn btn-outline"><i class="fas fa-eye"></i> Visualizar</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="report-card">
-                                    <h3>Relatório Financeiro</h3>
-                                    <p>Demonstrativo de receitas, despesas e lucratividade do negócio.</p>
-                                    <div class="report-actions">
-                                        <button class="btn btn-primary"><i class="fas fa-download"></i> Baixar PDF</button>
-                                        <button class="btn btn-outline"><i class="fas fa-eye"></i> Visualizar</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="report-card">
-                                    <h3>Relatório de Estoque</h3>
-                                    <p>Controle de produtos em estoque, movimentações e alertas.</p>
-                                    <div class="report-actions">
-                                        <button class="btn btn-primary"><i class="fas fa-download"></i> Baixar PDF</button>
-                                        <button class="btn btn-outline"><i class="fas fa-eye"></i> Visualizar</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="report-card">
-                                    <h3>Relatório de Clientes</h3>
-                                    <p>Análise do perfil de clientes, histórico de compras e fidelidade.</p>
-                                    <div class="report-actions">
-                                        <button class="btn btn-primary"><i class="fas fa-download"></i> Baixar PDF</button>
-                                        <button class="btn btn-outline"><i class="fas fa-eye"></i> Visualizar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Settings Section -->
-                        <div class="content-section" id="settings">
-                            <h2 class="section-title-sm">Configurações do Sistema</h2>
-                            
-                            <div class="settings-grid">
-                                <div class="settings-card">
-                                    <h3><i class="fas fa-user-shield"></i> Segurança</h3>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span>Autenticação em duas etapas</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Log de atividades</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Backup automático</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="settings-card">
-                                    <h3><i class="fas fa-bell"></i> Notificações</h3>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span>Notificações por e-mail</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Alertas de estoque baixo</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox" checked>
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Notificações de vendas</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="settings-card">
-                                    <h3><i class="fas fa-paint-brush"></i> Aparência</h3>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span>Tema escuro</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Layout compacto</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <span>Modo alta contraste</span>
-                                            <label class="toggle-switch">
-                                                <input type="checkbox">
-                                                <span class="slider"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="settings-card">
-                                    <h3><i class="fas fa-sliders-h"></i> Preferências</h3>
-                                    <ul class="settings-list">
-                                        <li>
-                                            <span>Idioma: Português</span>
-                                            <select class="form-control" style="width: 120px; padding: 5px;">
-                                                <option>Português</option>
-                                                <option>English</option>
-                                                <option>Español</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            <span>Moeda: Real (R$)</span>
-                                            <select class="form-control" style="width: 120px; padding: 5px;">
-                                                <option>Real (R$)</option>
-                                                <option>Dólar (US$)</option>
-                                                <option>Euro (€)</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            <span>Fuso horário: GMT-3</span>
-                                            <select class="form-control" style="width: 120px; padding: 5px;">
-                                                <option>GMT-3</option>
-                                                <option>GMT-4</option>
-                                                <option>GMT-5</option>
-                                            </select>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -2065,8 +1992,8 @@
                 <div class="footer-column">
                     <h3>Contato</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-envelope"></i> contato@techsolutions.com</a></li>
-                        <li><a href="#"><i class="fas fa-phone"></i> (11) 9999-8888</a></li>
+                        <li><a href="mailto:contato@techsolutions.com"><i class="fas fa-envelope"></i> contato@techsolutions.com</a></li>
+                        <li><a href="tel:+5511999998888"><i class="fas fa-phone"></i> (11) 9999-8888</a></li>
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</a></li>
                     </ul>
                 </div>
@@ -2087,25 +2014,26 @@
             <form id="product-form">
                 <div class="form-group">
                     <label for="product-name">Nome do Produto</label>
-                    <input type="text" id="product-name" class="form-control" placeholder="Ex: Software de Gestão">
+                    <input type="text" id="product-name" class="form-control" placeholder="Ex: Software de Gestão" required>
                 </div>
                 <div class="form-group">
                     <label for="product-category">Categoria</label>
-                    <select id="product-category" class="form-control">
+                    <select id="product-category" class="form-control" required>
                         <option value="">Selecione uma categoria</option>
                         <option value="gestao">Gestão</option>
                         <option value="seguranca">Segurança</option>
                         <option value="armazenamento">Armazenamento</option>
                         <option value="mobile">Mobile</option>
+                        <option value="desenvolvimento">Desenvolvimento</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="product-price">Preço (R$)</label>
-                    <input type="number" id="product-price" class="form-control" placeholder="0,00" step="0.01">
+                    <input type="number" id="product-price" class="form-control" placeholder="0,00" step="0.01" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="product-stock">Estoque</label>
-                    <input type="number" id="product-stock" class="form-control" placeholder="Quantidade em estoque">
+                    <input type="number" id="product-stock" class="form-control" placeholder="Quantidade em estoque" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="product-description">Descrição</label>
@@ -2119,40 +2047,9 @@
         </div>
     </div>
 
-    <!-- Add Client Modal -->
-    <div class="modal" id="client-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Adicionar Cliente</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <form id="client-form">
-                <div class="form-group">
-                    <label for="client-company">Empresa</label>
-                    <input type="text" id="client-company" class="form-control" placeholder="Nome da empresa">
-                </div>
-                <div class="form-group">
-                    <label for="client-cnpj">CNPJ</label>
-                    <input type="text" id="client-cnpj" class="form-control" placeholder="00.000.000/0000-00">
-                </div>
-                <div class="form-group">
-                    <label for="client-contact">Contato</label>
-                    <input type="text" id="client-contact" class="form-control" placeholder="Nome do responsável">
-                </div>
-                <div class="form-group">
-                    <label for="client-email">E-mail</label>
-                    <input type="email" id="client-email" class="form-control" placeholder="email@empresa.com">
-                </div>
-                <div class="form-group">
-                    <label for="client-phone">Telefone</label>
-                    <input type="text" id="client-phone" class="form-control" placeholder="(11) 99999-9999">
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn btn-cancel close-modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar Cliente</button>
-                </div>
-            </form>
-        </div>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="theme-toggle">
+        <i class="fas fa-moon"></i>
     </div>
 
     <script>
@@ -2194,6 +2091,9 @@
             } else {
                 header.classList.remove('scrolled');
             }
+            
+            // Animate counters when in view
+            animateCounters();
         });
         
         // Animação de entrada para elementos
@@ -2211,26 +2111,31 @@
             fadeInObserver.observe(element);
         });
         
-        // Efeito de digitação no hero
-        const heroTitle = document.querySelector('.hero h2');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 40);
-            }
-        };
-        
-        // Iniciar efeito de digitação quando a página carregar
+        // Animate counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target && counter.getBoundingClientRect().top < window.innerHeight) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(() => animateCounters(), 10);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Iniciar animações quando a página carregar
         window.addEventListener('load', () => {
-            setTimeout(typeWriter, 800);
+            animateCounters();
         });
         
-        // Adicionar efeito de partículas no hero (simplificado)
+        // Adicionar efeito de partículas no hero
         const floatingContainer = document.querySelector('.floating-elements');
         for (let i = 0; i < 15; i++) {
             const element = document.createElement('div');
@@ -2264,9 +2169,7 @@
                 document.querySelectorAll('.sidebar-menu a').forEach(link => {
                     link.classList.remove('active');
                 });
-                if(this.classList.contains('sidebar-menu')) {
-                    this.classList.add('active');
-                }
+                document.querySelector(`.sidebar-menu a[data-section="${targetSection}"]`).classList.add('active');
                 
                 // Show target section
                 document.querySelectorAll('.content-section').forEach(section => {
@@ -2282,10 +2185,6 @@
         
         document.getElementById('add-product-btn').addEventListener('click', () => {
             document.getElementById('product-modal').classList.add('active');
-        });
-        
-        document.getElementById('add-client-btn').addEventListener('click', () => {
-            document.getElementById('client-modal').classList.add('active');
         });
         
         closeModalButtons.forEach(button => {
@@ -2305,27 +2204,156 @@
             });
         });
 
-        // Form submissions
+        // Product form submission
         document.getElementById('product-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Produto cadastrado com sucesso!');
-            document.getElementById('product-modal').classList.remove('active');
+            
+            // Show loading state
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="loading"></span> Salvando...';
+            submitBtn.disabled = true;
+            
+            // Get form values
+            const name = document.getElementById('product-name').value;
+            const category = document.getElementById('product-category').value;
+            const price = parseFloat(document.getElementById('product-price').value);
+            const stock = parseInt(document.getElementById('product-stock').value);
+            const description = document.getElementById('product-description').value;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Create new product
+                addProductToCatalog(name, category, price, stock, description);
+                
+                // Reset button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Close modal and reset form
+                document.getElementById('product-modal').classList.remove('active');
+                document.getElementById('product-form').reset();
+                
+                // Show success message
+                showNotification('Produto cadastrado com sucesso!', 'success');
+            }, 1500);
         });
 
-        document.getElementById('client-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Cliente cadastrado com sucesso!');
-            document.getElementById('client-modal').classList.remove('active');
-        });
+        // Function to add product to catalog
+        function addProductToCatalog(name, category, price, stock, description) {
+            const productsContainer = document.getElementById('products-container');
+            
+            // Create product card
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image"><i class="${getCategoryIcon(category)}"></i></div>
+                <div class="product-info">
+                    <h3>${name}</h3>
+                    <span class="product-category">${getCategoryName(category)}</span>
+                    <div class="product-price">R$ ${price.toFixed(2)}</div>
+                    <div class="product-stock">
+                        <span>Estoque:</span>
+                        <span class="stock-badge">${stock > 0 ? stock + ' unidades' : 'Sem estoque'}</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-sm btn-primary-sm" onclick="editProduct(this)"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn-sm btn-outline-sm" onclick="deleteProduct(this)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `;
+            
+            // Add to container (at the beginning)
+            productsContainer.insertBefore(productCard, productsContainer.firstChild);
+            
+            // Update activity log
+            addActivityLog(`Produto "${name}" adicionado ao catálogo - R$ ${price.toFixed(2)}`);
+        }
+
+        // Helper functions for product categories
+        function getCategoryIcon(category) {
+            const icons = {
+                'gestao': 'fas fa-chart-line',
+                'seguranca': 'fas fa-shield-alt',
+                'armazenamento': 'fas fa-cloud',
+                'mobile': 'fas fa-mobile-alt',
+                'desenvolvimento': 'fas fa-code'
+            };
+            return icons[category] || 'fas fa-box';
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'gestao': 'Gestão',
+                'seguranca': 'Segurança',
+                'armazenamento': 'Armazenamento',
+                'mobile': 'Mobile',
+                'desenvolvimento': 'Desenvolvimento'
+            };
+            return names[category] || 'Geral';
+        }
+
+        // Product actions
+        function editProduct(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('h3').textContent;
+            showNotification(`Editando produto: ${productName}`, 'info');
+        }
+
+        function deleteProduct(button) {
+            const productCard = button.closest('.product-card');
+            const productName = productCard.querySelector('h3').textContent;
+            
+            if (confirm(`Tem certeza que deseja excluir o produto "${productName}"?`)) {
+                productCard.remove();
+                addActivityLog(`Produto "${productName}" removido do catálogo`);
+                showNotification('Produto removido com sucesso!', 'success');
+            }
+        }
+
+        // Activity log function
+        function addActivityLog(message) {
+            const activityList = document.querySelector('.activity-list');
+            const activityItem = document.createElement('li');
+            activityItem.className = 'activity-item';
+            activityItem.innerHTML = `
+                <div class="activity-icon"><i class="fas fa-box"></i></div>
+                <div class="activity-details">
+                    <h4>Produto adicionado ao catálogo</h4>
+                    <p>${message}</p>
+                </div>
+            `;
+            
+            // Add to top of activity list
+            activityList.insertBefore(activityItem, activityList.firstChild);
+            
+            // Limit to 5 activities
+            if (activityList.children.length > 5) {
+                activityList.removeChild(activityList.lastChild);
+            }
+        }
 
         // Checkout functionality
-        document.getElementById('checkout-btn').addEventListener('click', () => {
-            document.getElementById('sale-success').classList.add('active');
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            // Show loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="loading"></span> Processando...';
+            this.disabled = true;
             
             // Simulate processing
             setTimeout(() => {
-                document.getElementById('sale-success').classList.remove('active');
-            }, 5000);
+                document.getElementById('sale-success').classList.add('active');
+                this.innerHTML = originalText;
+                this.disabled = false;
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById('sale-success').classList.remove('active');
+                }, 5000);
+                
+                // Show notification
+                showNotification('Venda finalizada com sucesso!', 'success');
+            }, 2000);
         });
 
         // Quantity buttons
@@ -2342,12 +2370,166 @@
                 
                 quantityElement.textContent = quantity;
                 
-                // Update cart count (simplified)
+                // Update cart count
+                const cartItems = document.querySelectorAll('.cart-item');
                 const cartCount = document.getElementById('cart-count');
-                const currentCount = parseInt(cartCount.textContent);
-                cartCount.textContent = `${currentCount} itens`;
+                cartCount.textContent = `${cartItems.length} ${cartItems.length === 1 ? 'item' : 'itens'}`;
             });
         });
+
+        // Product search functionality
+        document.getElementById('product-search').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                const productCategory = card.querySelector('.product-category').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm) || productCategory.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+                <button class="notification-close">&times;</button>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Close button functionality
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                notification.remove();
+            });
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
+
+        // Testimonial slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            testimonialDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            testimonials[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonial(index);
+            });
+        });
+
+        // Auto rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-sun';
+                showNotification('Modo escuro ativado', 'info');
+            } else {
+                icon.className = 'fas fa-moon';
+                showNotification('Modo claro ativado', 'info');
+            }
+        });
+
+        // Add dark mode styles
+        const darkModeStyles = document.createElement('style');
+        darkModeStyles.textContent = `
+            body.dark-mode {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .features,
+            body.dark-mode .demo-interactive,
+            body.dark-mode .testimonials {
+                background-color: #1e1e1e;
+            }
+            
+            body.dark-mode .feature-card,
+            body.dark-mode .stat-card,
+            body.dark-mode .recent-activity,
+            body.dark-mode .product-card,
+            body.dark-mode .cart-summary,
+            body.dark-mode .modal-content,
+            body.dark-mode .testimonial {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .feature-card h3,
+            body.dark-mode .section-title h2,
+            body.dark-mode .section-title-sm,
+            body.dark-mode .product-info h3,
+            body.dark-mode .cart-item-details h4,
+            body.dark-mode .modal-header h2 {
+                color: #ffffff;
+            }
+            
+            body.dark-mode .feature-card p,
+            body.dark-mode .activity-details p,
+            body.dark-mode .testimonial-text {
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .search-input,
+            body.dark-mode .form-control {
+                background-color: #2d2d2d;
+                border-color: #404040;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .cart-list {
+                border-color: #404040;
+            }
+            
+            body.dark-mode .cart-item {
+                border-color: #404040;
+            }
+            
+            body.dark-mode .btn-outline-sm {
+                border-color: #404040;
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .btn-outline-sm:hover {
+                background-color: #404040;
+            }
+        `;
+        document.head.appendChild(darkModeStyles);
 
         // Simulate real-time data updates
         setInterval(() => {
